@@ -6,6 +6,7 @@ import { withRouter } from 'react-router-dom';
 import Login from '../containers/auth/Login';
 import Register from '../containers/auth/Register';
 import Home from '../containers/Home';
+import Soon from './Soon';
 import { authUser } from '../store/actions/AuthActions';
 
 class AppLayout extends React.Component {
@@ -26,6 +27,7 @@ class AppLayout extends React.Component {
       </div>
     ) : (
       <div>
+        <Soon/>
         <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={Login} />
       </div>
