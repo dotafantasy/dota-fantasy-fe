@@ -9,6 +9,11 @@ import Home from '../containers/Home';
 import Soon from './Soon';
 import { authUser } from '../store/actions/AuthActions';
 
+//Only for initial presentation
+import Nav from './Nav'
+import Main from './Main'
+import Footer from './Footer'
+
 class AppLayout extends React.Component {
   componentDidUpdate(prevProps) {
     if (this.props.user !== prevProps.user) {
@@ -20,18 +25,28 @@ class AppLayout extends React.Component {
     }
   }
 
-  render() {
-    return this.props.user ? (
+  // render() {
+  //   return this.props.user ? (
+  //     <div>
+  //       <Route exact path="/home" component={Home} />
+  //     </div>
+  //   ) : (
+  //     <div>
+  //       <Soon/>
+  //       <Route exact path="/register" component={Register} />
+  //       <Route exact path="/login" component={Login} />
+  //     </div>
+  //   );
+  // }
+  render(){
+    return(
       <div>
-        <Route exact path="/home" component={Home} />
-      </div>
-    ) : (
-      <div>
-        <Soon/>
-        <Route exact path="/register" component={Register} />
-        <Route exact path="/login" component={Login} />
-      </div>
-    );
+        <Nav/>
+        <Main/>
+        <Footer/>
+       </div>
+    )
+    
   }
 }
 
