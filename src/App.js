@@ -4,9 +4,8 @@ import { Provider } from 'react-redux';
 import createHistory from 'history/createBrowserHistory';
 
 import './App.css';
-import AppLayout from './component/AppLayout';
+import AppLayout from './containers/AppLayout';
 import store from './store/Store';
-import './styles/css/bootstrap.min.css';
 
 const history = createHistory();
 

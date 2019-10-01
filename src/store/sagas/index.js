@@ -1,12 +1,10 @@
-import { all, takeLatest } from 'redux-saga/effects';
-import { LOGIN, REGISTER, GET_MOVIES } from '../actions/ActionTypes';
-import { userLogin, userRegister } from './AuthSagas';
-import { moviesGet } from './MovieSagas';
+import { fork } from 'redux-saga/effects';
+import AuthSaga from './AuthSaga';
 
 export default function* rootSaga() {
-  yield all([
-    takeLatest(LOGIN, userLogin),
-    takeLatest(REGISTER, userRegister),
-    takeLatest(GET_MOVIES, moviesGet)
-  ]);
+  yield [
+    fork(AuthSaga),
+    //fork(secondSaga),
+    //fork(thirdSaga),
+  ];
 }
