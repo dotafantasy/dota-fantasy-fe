@@ -1,39 +1,13 @@
 import React, { useState } from 'react';
+import LoginForm from '../../../components/LoginForm';
 
-export default function Login({logIn}) {
-
-  const [email, setEmail ] = useState("");
-  const [password, setPassword ] = useState("");
-
-  const submit = e => {
-    e.preventDefault();
-
-    let logInData = {
-      email,
-      password
-    };
-    logIn(logInData);
-  };
+export default function Login({logIn, loginError}) {
 
   return (
     <div>
-      <form onSubmit={submit}>
-        <h2>Log In</h2>
-        <input
-          type="text"
-          placeholder="Email"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-        />
-        <input type="submit" value="Log in" />
-        {this.props.loginError && <p>Login error</p>}
-      </form>
+      {loginError}
+      <h1>Login</h1>
+      <LoginForm login={logIn}/>
     </div>
   );
 }

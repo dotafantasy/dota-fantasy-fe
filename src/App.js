@@ -14,9 +14,7 @@ class App extends Component {
     return (
       <Provider store={store}>
         <ConnectedRouter history={history}>
-          <div>
             <AppLayout history={history} />
-          </div>
         </ConnectedRouter>
       </Provider>
     );

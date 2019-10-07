@@ -1,9 +1,8 @@
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 
-import AppLayout from './AppLayout';
 
-import { logOut, getMe  } from '../../store/actions/AuthActions';
+import ProtectedComponent from './ProtectedComponent';
 
 const mapStateToProps = state => {
     return {
@@ -12,14 +11,9 @@ const mapStateToProps = state => {
     };
 };
   
-  const mapDispatchToProps = {
-    logOut,
-    getMe
-  };
-
 const withConnect = connect(
   mapStateToProps,
-  mapDispatchToProps
+  null
 )
 
-export default compose(withConnect)(AppLayout)
+export default compose(withConnect)(ProtectedComponent)
