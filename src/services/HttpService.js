@@ -21,16 +21,18 @@ class HttpService {
   }
 
   handleErrorResponse(error) {
-    const { status } = error.response;
+    //TODO if needed
 
-    switch (status) {
-      case 401: {
-        this.unauthorizedCallback();
-        break;
-      }
-      default:
-        break;
-    }
+    //const { status } = error.response;
+
+    // switch (status) {
+    //   case 401: {
+    //     this.unauthorizedCallback();
+    //     break;
+    //   }
+    //   default:
+    //     break;
+    // }
 
     return Promise.reject(error);
   }

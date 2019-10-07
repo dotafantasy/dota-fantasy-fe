@@ -1,16 +1,41 @@
-import { LOGIN, AUTH_USER, REGISTER, LOGIN_ERROR, REGISTER_ERROR } from './AuthActionTypes';
+import { LOGIN, LOGOUT, AUTH_USER, GET_ME, SET_ME, REGISTER, LOGIN_ERROR, REGISTER_ERROR } from './AuthActionTypes';
 
-export const logIn = logInData => {
+export const logIn = (loginData, setErrors) => {
   return {
     type: LOGIN,
-    payload: logInData
+    payload: loginData,
+    meta: {
+      setErrors
+    } 
   };
 };
 
-export const register = registerData => {
+export const getMe = () => {  
+  return {
+    type: GET_ME
+  }
+}
+
+export const setMe = user => {
+  return {
+    type: SET_ME,
+    payload: user
+  }
+}
+
+export const logOut = () => {
+  return {
+    type: LOGOUT
+  }
+}
+
+export const register = (registerData, setErrors) => {
   return {
     type: REGISTER,
-    payload: registerData
+    payload: registerData,
+    meta: {
+      setErrors
+    }
   };
 };
 

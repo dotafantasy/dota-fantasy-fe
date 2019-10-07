@@ -1,46 +1,38 @@
-import React, {Fragment} from 'react';
+import React, { Fragment, useEffect } from 'react';
 import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect
+  BrowserRouter as Router
 } from "react-router-dom";
-import Login from '../Auth/Login';
-import Register from '../Auth/Register';
-import Home from '../../containers/Home';
-import NotFound from '../../components/Pages/NotFound';
-import About from './../../components/Pages/About';
 import Header from '../../components/Header';
 import Side from '../../components/Side';
 import Footer from '../../components/Footer';
+import Routes from '../Routes';
 
-export default function AppLayout() {
+import './AppLayout.css';
 
+
+export default function AppLayout({logOut, isLoggedIn, loggedInUser, getMe}) {
+
+  useEffect(() => {
+    isLoggedIn && getMe();
+  }, [])
+  
   return (
-    <Router>
-      <Switch>
+      <Router>
         <Fragment>
-          <Header/>
-          <div class = "row">
-            <aside class = "col-md-2">
-              <Side/>
-            </aside>
-            <main class = "col-md-8">
-              {/* <ProtectedComponent path="/warehouses" exact component={Warehouses}/>} /> */}
-              {/* <Redirect from="/" to="/warehouses" exact /> */}
-              <Route path="/" exact component={Home} />
-              <Route path="/about" exact component={About} />
-            </main>
-            <aside class = "col-md-2">
-              <Side/>
-            </aside>
-          </div>
-          <Route path="/login" component={Login}/>
-          <Route path="/register" component={Register}/>
-          <Route path="*" component={NotFound}/>
-          <Footer/>
+        <Header logOut = {logOut} loggedInUser = {loggedInUser}/>
+        <div className="row">
+          <aside className="col-md-2">
+            <Side/>
+          </aside>
+          <main className="col-md-8">
+            <Routes/>
+          </main>
+          <aside className="col-md-2">
+            <Side/>
+          </aside>
+        </div>
+        <Footer/>
         </Fragment>
-      </Switch>
-    </Router>
+      </Router>
   );
 }
